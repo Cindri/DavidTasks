@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tasks</string>
+    <string name="task_title">Titel</string>
+    <string name="task_note">Notiz</string>
+    <string name="new_task">Neuer Task</string>
+    <string name="save_task">Speichern</string>
+    <string name="task_done">Erledigt</string>
+    <string name="title_activity_main2">Main2Activity</string>
+</resources>
