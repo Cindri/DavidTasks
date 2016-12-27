@@ -5,5 +5,7 @@
     <item
             android:title="@string/new_task"
             android:id="@+id/menuItemNewTask"
+            android:icon="@mipmap/ic_playlist_add_white_36dp"
+            app:showAsAction="ifRoom"
             />
 </menu>

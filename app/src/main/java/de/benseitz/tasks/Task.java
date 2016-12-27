@@ -8,11 +8,13 @@ import java.io.Serializable;
 public class Task implements Serializable {
     private String titel;
     private String notiz;
+    private Boolean wichtig;
 
-    public Task(String titel, String notiz) {
+    public Task(String titel, String notiz, Boolean wichtig) {
         super();
         this.titel = titel;
         this.notiz = notiz;
+        this.wichtig = wichtig;
     }
 
     public String getTitel() {
@@ -23,6 +25,8 @@ public class Task implements Serializable {
         return notiz;
     }
 
+    public boolean getWichtig() { return wichtig; }
+
     public void setTitel(String titel) {
         this.titel = titel;
     }
@@ -30,4 +34,6 @@ public class Task implements Serializable {
     public void setNotiz(String notiz) {
         this.notiz = notiz;
     }
+
+    public void setWichtig(Boolean wichtig) { this.wichtig = wichtig; }
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
@@ -18,6 +19,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private EditText taskTitle;
     private EditText taskNote;
     private Button saveButton;
+    private CheckBox importantBox;
 
     private Gson gson = new Gson();
     private Type token = new TypeToken<ArrayList<Task>>(){}.getType();
@@ -30,13 +32,14 @@ public class AddTaskActivity extends AppCompatActivity {
         taskTitle = (EditText) findViewById(R.id.taskTitle);
         taskNote = (EditText) findViewById(R.id.taskNote);
         saveButton = (Button) findViewById(R.id.addTask);
+        importantBox = (CheckBox) findViewById(R.id.checkBox);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 // Get values of new task
-                Task newTask = new Task(taskTitle.getText().toString(), taskNote.getText().toString());
+                Task newTask = new Task(taskTitle.getText().toString(), taskNote.getText().toString(), importantBox.isChecked());
 
                 // Create ArrayList from JSON
 

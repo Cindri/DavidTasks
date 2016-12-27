@@ -41,6 +41,10 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         }
 
         viewHolder.titel.setText(task.getTitel());
+        if (task.getWichtig()) {
+            viewHolder.titel.setTextColor(R.color.colorAccent);
+        }
+
         viewHolder.titel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

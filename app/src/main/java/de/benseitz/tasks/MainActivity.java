@@ -3,8 +3,10 @@ package de.benseitz.tasks;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences(Constants.TASK_STORAGE_NAME, 0);
         tasksAsJson = settings.getString("tasksAsJson", "");
 
+        if (tasksAsJson.length() == 0) {
+            tasksAsJson = "[]";
+        }
 
         tasks = gson.fromJson(tasksAsJson, Constants.TYPE_ARRAY_LIST);
 
