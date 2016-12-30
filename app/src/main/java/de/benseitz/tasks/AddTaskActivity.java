@@ -39,7 +39,7 @@ public class AddTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Get values of new task
-                Task newTask = new Task(taskTitle.getText().toString(), taskNote.getText().toString(), importantBox.isChecked());
+                Task newTask = new Task(taskTitle.getText().toString(), taskNote.getText().toString(), importantBox.isChecked(), false);
 
                 // Create ArrayList from JSON
 

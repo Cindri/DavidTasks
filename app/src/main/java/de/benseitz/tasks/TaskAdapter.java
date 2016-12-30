@@ -3,6 +3,7 @@ package de.benseitz.tasks;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
@@ -23,6 +23,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 
     private static class ViewHolder {
         public TextView titel;
+        public Button buttonDelete;
         public Button buttonDone;
     }
 
@@ -42,7 +43,8 @@ public class TaskAdapter extends ArrayAdapter<Task> {
             LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item_tasklist, parent, false);
             viewHolder.titel = (TextView)convertView.findViewById(R.id.titel);
-            viewHolder.buttonDone = (Button)convertView.findViewById(R.id.task_delete);
+            viewHolder.buttonDelete = (Button)convertView.findViewById(R.id.task_delete);
+            viewHolder.buttonDone = (Button)convertView.findViewById(R.id.button_task_done);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -54,8 +56,12 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         String colorAccentString = context.getString(Integer.parseInt(String.valueOf(R.color.colorAccent)));
         int colorAccent = Color.parseColor(colorAccentString);
 
-        if (task.getWichtig()) {
+        if (task.getImportant()) {
             viewHolder.titel.setTextColor(colorAccent);
+        }
+
+        if (task.getDone()) {
+            viewHolder.titel.setPaintFlags(viewHolder.titel.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
         viewHolder.titel.setOnClickListener(new View.OnClickListener() {
@@ -78,10 +84,17 @@ public class TaskAdapter extends ArrayAdapter<Task> {
             }
         });
 
-        viewHolder.buttonDone.setOnClickListener(new View.OnClickListener() {
+        viewHolder.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 remove(task);
+            }
+        });
+        viewHolder.buttonDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                task.setDone(true);
+                notifyDataSetChanged();
             }
         });
         return convertView;

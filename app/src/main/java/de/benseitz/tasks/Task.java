@@ -8,13 +8,15 @@ import java.io.Serializable;
 public class Task implements Serializable {
     private String titel;
     private String notiz;
-    private Boolean wichtig;
+    private Boolean important;
+    private Boolean done;
 
-    public Task(String titel, String notiz, Boolean wichtig) {
+    public Task(String titel, String notiz, Boolean important, Boolean done) {
         super();
         this.titel = titel;
         this.notiz = notiz;
-        this.wichtig = wichtig;
+        this.important = important;
+        this.done = done;
     }
 
     public String getTitel() {
@@ -25,7 +27,9 @@ public class Task implements Serializable {
         return notiz;
     }
 
-    public boolean getWichtig() { return wichtig; }
+    public boolean getImportant() { return important; }
+
+    public boolean getDone() { return done; }
 
     public void setTitel(String titel) {
         this.titel = titel;
@@ -35,5 +39,7 @@ public class Task implements Serializable {
         this.notiz = notiz;
     }
 
-    public void setWichtig(boolean wichtig) { this.wichtig = wichtig; }
+    public void setImportant(boolean important) { this.important = important; }
+
+    public void setDone(boolean done) { this.done = done; }
 }

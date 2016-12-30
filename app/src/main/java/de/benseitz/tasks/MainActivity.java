@@ -107,4 +107,5 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("tasksAsJson", json);
         editor.apply();
     }
+
 }

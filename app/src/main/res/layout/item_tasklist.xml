@@ -6,29 +6,43 @@
 
     <TextView
             android:id="@+id/titel"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="titel"
             android:layout_toLeftOf="@+id/task_delete"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignBottom="@+id/task_delete"
             android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:textColor="@color/colorPrimaryDark"
             android:background="?attr/colorButtonNormal"/>
 
     <Button
             android:id="@+id/task_delete"
-            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="@string/task_done"
+            android:textColor="@color/colorWhite"
+            android:background="@android:color/holo_red_dark"
+            android:drawableRight="@drawable/ic_action_close"
+            android:drawableEnd="@drawable/ic_action_close"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:textColor="@color/colorWhite"
-            android:background="@android:color/holo_green_dark"/>
+            android:layout_alignBottom="@+id/titel"
+            android:layout_width="36dp"/>
+
+    <Button
+            android:id="@+id/button_task_done"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            android:drawableRight="@drawable/ic_action_done"
+            android:drawableEnd="@drawable/ic_action_done"
+            android:layout_width="36dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/task_delete"
+            android:layout_toStartOf="@+id/task_delete"
+            android:layout_alignBottom="@+id/titel"/>
 
 </RelativeLayout>

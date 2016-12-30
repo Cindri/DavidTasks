@@ -31,9 +31,12 @@ public class DetailsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.details_menu, menu);
-        boolean important = task.getWichtig();
-        int iconKey = (important ? R.mipmap.ic_error_outline_pink_36dp : R.mipmap.ic_error_outline_white_36dp);
-        menu.getItem(0).setIcon(iconKey);
+
+        int importantIconKey = (task.getImportant() ? R.mipmap.ic_error_outline_pink_36dp : R.mipmap.ic_error_outline_white_36dp);
+        int doneIconKey = (task.getDone() ? R.mipmap.ic_undo_white_24dp : R.mipmap.ic_done_white_24dp);
+        menu.getItem(0).setIcon(importantIconKey);
+        menu.getItem(1).setIcon(doneIconKey);
+
         return true;
     }
 
@@ -43,15 +46,16 @@ public class DetailsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.task_important:
                 modification = "change";
-
-                boolean important = task.getWichtig();
-                task.setWichtig(!important);
-
+                task.setImportant(!task.getImportant());
                 saveAndBack();
                 return true;
             case R.id.task_delete_menu:
                 modification = "delete";
-
+                saveAndBack();
+                return true;
+            case R.id.task_done:
+                modification = "change";
+                task.setDone(!task.getDone());
                 saveAndBack();
                 return true;
             default:

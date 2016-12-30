@@ -9,6 +9,12 @@
             app:showAsAction="ifRoom"
             />
     <item
+            android:title="@string/task_done"
+            android:id="@+id/task_done"
+            android:icon="@mipmap/ic_done_white_24dp"
+            app:showAsAction="ifRoom"
+            />
+    <item
             android:title="Delete"
             android:id="@+id/task_delete_menu"
             android:icon="@mipmap/ic_delete_forever_white_36dp"
