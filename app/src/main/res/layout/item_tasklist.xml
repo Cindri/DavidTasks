@@ -17,7 +17,7 @@
             android:layout_alignBottom="@+id/task_delete"
             android:paddingLeft="16dp"
             android:paddingTop="10dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:background="?attr/colorButtonNormal"/>
 
     <Button
@@ -28,7 +28,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:textColor="@android:color/background_light"
+            android:textColor="@color/colorWhite"
             android:background="@android:color/holo_green_dark"/>
 
 </RelativeLayout>

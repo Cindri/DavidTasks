@@ -3,13 +3,13 @@
       xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:title="@string/new_task"
+            android:title="@string/task_important"
             android:id="@+id/task_important"
             android:icon="@mipmap/ic_error_outline_white_36dp"
             app:showAsAction="ifRoom"
             />
     <item
-            android:title="@string/new_task"
+            android:title="Delete"
             android:id="@+id/task_delete_menu"
             android:icon="@mipmap/ic_delete_forever_white_36dp"
             app:showAsAction="ifRoom"

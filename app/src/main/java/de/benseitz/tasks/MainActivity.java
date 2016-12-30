@@ -3,10 +3,9 @@ package de.benseitz.tasks;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     public ArrayList<Task> tasks = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +40,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         tasks = gson.fromJson(tasksAsJson, Constants.TYPE_ARRAY_LIST);
+
+        // Check for external Task modifications
+        if (getIntent().hasExtra(Constants.TASK_MODIFICATION)) {
+            Task newTask = (Task) getIntent().getSerializableExtra(Constants.TASK_DETAIL);
+            int taskIndex = getIntent().getIntExtra(Constants.INDEX_TASK_MODIFIED, 0);
+
+            switch (getIntent().getStringExtra(Constants.TASK_MODIFICATION)) {
+                case "change":
+                    tasks.remove(taskIndex);
+                    tasks.add(taskIndex, newTask);
+                    break;
+                case "delete":
+                    tasks.remove(taskIndex);
+                    break;
+            }
+        }
 
         lvTasks = (ListView) findViewById(R.id.lvTasks);
         taskAdapter = new TaskAdapter(this, tasks);
@@ -84,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         // At activity stop: Store current task list
         String json = gson.toJson(tasks);
         SharedPreferences settings = getSharedPreferences(Constants.TASK_STORAGE_NAME, 0);

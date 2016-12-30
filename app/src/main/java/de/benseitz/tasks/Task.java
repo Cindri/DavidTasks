@@ -35,5 +35,5 @@ public class Task implements Serializable {
         this.notiz = notiz;
     }
 
-    public void setWichtig(Boolean wichtig) { this.wichtig = wichtig; }
+    public void setWichtig(boolean wichtig) { this.wichtig = wichtig; }
 }
